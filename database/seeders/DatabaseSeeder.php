@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Appointment;
 use App\Models\Dependency;
-use App\Models\Offices;
+use App\Models\Office;
 use App\Models\Role;
 use App\Models\Transaction;
 use App\Models\User;
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
 //
         User::factory(50)->create();
         Dependency::factory(50)->create();
-        Offices::factory(50)->create();
+        Office::factory(50)->create();
         Transaction::factory(50)->create();
         Appointment::factory(50)->create();
     }

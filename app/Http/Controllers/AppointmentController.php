@@ -29,7 +29,7 @@ class AppointmentController extends Controller
 
                 $appointment->update(['appointment_status' => 'Inactiva']);
                 DB::commit();
-                
+
             return [
                 'success'   =>  true,
                 'message'   =>  'La cita ha sido cancelada con exito',
@@ -41,7 +41,7 @@ class AppointmentController extends Controller
             DB::rollBack();
             return [
                 'success'   =>  false,
-                'message'   =>  'Error cancelar cita',
+                'message'   =>  'Error al cancelar cita',
                 'data'      =>  '',
                 'error'     =>  $e->getMessage(),
                 'code'      =>  $e->getCode()
