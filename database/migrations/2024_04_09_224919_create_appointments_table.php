@@ -16,7 +16,7 @@ return new class extends Migration
             $table->dateTime('date');
             $table->string('citizen_name');
             $table->string('citizen_firstname');
-            $table->string('citizen_secondname');
+            $table->string('citizen_lastname');
             $table->string('email')->nullable();
             $table->string('curp');
             $table->string('phone')->nullable();
@@ -31,12 +31,8 @@ return new class extends Migration
             $table->foreign('office_id')->references('id')->on('offices');
 
             //este campo sirve para saber quien creo la cita
-            $table->unsignedBigInteger('created_by_user_id')->nullable();
-            $table->foreign('created_by_user_id')->references('id')->on('users');
-
-            //este campo sirve para saber quien edito la cita
-            $table->unsignedBigInteger('updated_by_user_id')->nullable();
-            $table->foreign('updated_by_user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
             $table->softDeletes();

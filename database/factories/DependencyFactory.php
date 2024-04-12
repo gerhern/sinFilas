@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\dependency>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Dependency>
  */
 class DependencyFactory extends Factory
 {
@@ -17,7 +17,7 @@ class DependencyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'  => fake()->words(3, true)
         ];
     }
 }

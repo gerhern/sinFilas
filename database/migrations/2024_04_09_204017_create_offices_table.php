@@ -22,14 +22,6 @@ return new class extends Migration
             $table->unsignedBigInteger('dependency_id')->nullable();
             $table->foreign('dependency_id')->references('id')->on('dependencies');
 
-            //este campo sirve para saber quien creo la cita
-            $table->unsignedBigInteger('created_by_user_id')->nullable();
-            $table->foreign('created_by_user_id')->references('id')->on('users');
-
-            //este campo sirve para saber quien edito la cita
-            $table->unsignedBigInteger('updated_by_user_id')->nullable();
-            $table->foreign('updated_by_user_id')->references('id')->on('users');
-
             $table->timestamps();
             $table->softDeletes();
         });

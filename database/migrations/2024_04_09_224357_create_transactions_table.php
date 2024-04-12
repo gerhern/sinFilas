@@ -16,17 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('requirements')->nullable();
             $table->integer('minutes');
-            $table->string('price');
+            $table->integer('price');
             $table->string('code');
             $table->text('warning_message')->nullable();
 
             //este campo sirve para saber quien creo la cita
-            $table->unsignedBigInteger('created_by_user_id')->nullable();
-            $table->foreign('created_by_user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
 
-            //este campo sirve para saber quien edito la cita
-            $table->unsignedBigInteger('updated_by_user_id')->nullable();
-            $table->foreign('updated_by_user_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('dependency_id')->nullable();
             $table->foreign('dependency_id')->references('id')->on('dependencies');
