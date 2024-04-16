@@ -27,7 +27,7 @@ class AppointmentFactory extends Factory
             'folio'             => fake()->bothify('?####'),
             'ip'                => fake()->ipv4,
             'appointment_status'    => fake()->randomElement(['Activa', 'Inactiva']),
-            'transaction_id'        => fake()->numberBetween(1,50),
+            'transaction_id'        => fake()->numberBetween(1,4),
             'office_id'        => fake()->numberBetween(1,50),
             'user_id'        => fake()->numberBetween(1,50),
         ];

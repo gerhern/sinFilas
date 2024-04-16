@@ -12,4 +12,8 @@ class Appointment extends Model
     public $fillable = [
         'appointment_status'
     ];
+
+    public function transaction(){
+        return $this->belongsTo(Transaction::class);
+    }
 }

@@ -24,8 +24,6 @@ class TransactionFactory extends Factory
             'price'         => fake()->randomNumber(3),
             'code'          => fake()->ean13(),
             'warning_message'   => fake()->sentence(),
-            'user_id'       => fake()->numberBetween(1, 20),
-            'dependency_id' => fake()->numberBetween(1, 50)
 
         ];
     }

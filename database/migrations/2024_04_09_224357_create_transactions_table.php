@@ -19,15 +19,6 @@ return new class extends Migration
             $table->integer('price');
             $table->string('code');
             $table->text('warning_message')->nullable();
-
-            //este campo sirve para saber quien creo la cita
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
-
-
-            $table->unsignedBigInteger('dependency_id')->nullable();
-            $table->foreign('dependency_id')->references('id')->on('dependencies');
-
             $table->timestamps();
             $table->softDeletes();
         });

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dependency;
 use App\Models\Office;
 use App\Models\Transaction;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class OfficeController extends Controller
@@ -40,6 +42,51 @@ class OfficeController extends Controller
             return [
                 'success'   =>  false,
                 'message'   =>  'Error al consultar oficinas',
+                'data'      =>  '',
+                'error'     =>  $e->getMessage(),
+                'code'      =>  $e->getCode()
+            ];
+        }
+    }
+
+    public function getOfficesByDependency(Request $request){
+        try{
+            $officeName = $request->office;
+            $idDependency = $request->dependency;
+            if(!isset($idDependency)){
+                $data = Dependency::with('offices')->orderBy('name');
+                if(isset($officeName)){
+                    $data = Dependency::with('offices')->whereHas('offices',  function(Builder $query) use ($officeName){
+                       $query->where('name', 'like', "%$officeName%");
+                    })->orderBy('name');
+                }
+                $data = $data->get();
+
+            }else{
+                $data = Dependency::with('offices');
+                if(isset($officeName)){
+                    $data = Dependency::with('offices')->whereHas('offices',  function(Builder $query) use ($officeName){
+                        $query->where('name', 'like', "%$officeName%");
+                    });
+                }
+                $data = $data->find($idDependency);
+            }
+
+            if(!$data){
+                throw new \Exception("No se encontraron datos", 404);
+            }
+
+            return [
+                'success'   =>  true,
+                'message'   =>  'Oficinas obtenidas correctamente',
+                'data'      =>  json_decode($data),
+                'error'     =>  '',
+                'code'      =>  200
+            ];
+        }catch(\Exception $e){
+            return [
+                'success'   =>  false,
+                'message'   =>  'Error al obtener oficinas',
                 'data'      =>  '',
                 'error'     =>  $e->getMessage(),
                 'code'      =>  $e->getCode()

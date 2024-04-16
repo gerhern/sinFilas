@@ -12,4 +12,7 @@ class Transaction extends Model
     public function offices(){
         return $this->belongsToMany(Office::class)->orderBy('name');
     }
+    public function appointment(){
+        return $this->hasMany(Appointment::class);
+    }
 }

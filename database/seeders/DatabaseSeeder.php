@@ -34,7 +34,12 @@ class DatabaseSeeder extends Seeder
         User::factory(50)->create();
         Dependency::factory(50)->create();
         Office::factory(50)->create();
-        Transaction::factory(50)->create();
+//        Transaction::factory(50)->create();
+        Transaction::factory()->create(['name' => 'Nacimiento']);
+        Transaction::factory()->create(['name' => 'Cambio de domicilio']);
+        Transaction::factory()->create(['name' => 'Cambio de email']);
+        Transaction::factory()->create(['name' => 'Alta de curp']);
+        Transaction::factory()->create(['name' => 'Defuncion']);
         Appointment::factory(50)->create();
     }
 }

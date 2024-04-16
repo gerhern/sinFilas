@@ -12,4 +12,8 @@ class Office extends Model
     public function transactions(){
         return $this->belongsToMany(Transaction::class)->orderBy('name');
     }
+
+    public function dependency(){
+        return $this->belongsTo(Dependency::class);
+    }
 }
