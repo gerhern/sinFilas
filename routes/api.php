@@ -27,5 +27,6 @@ Route::prefix('v1')->group(function(){
 
     //Dependencies
     Route::get('getDependenciesList', [DependencyController::class, 'getDependenciesList']);
+    Route::post('storeDependency', [DependencyController::class, 'storeDependency']);
 });
 //fin de rutas api
